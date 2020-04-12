@@ -1,12 +1,20 @@
 package org.example;
 
-import jdbc.SingleConnection;
+import dao.UsersDAO;
+import model.Users;
 import org.junit.Test;
 
 public class DatabaseConnectionTest {
 
     @Test
     public void initDatabase() {
-        SingleConnection.getConnection();
+        Users users = new Users();
+        UsersDAO usersDAO = new UsersDAO();
+
+        users.setId(3L);
+        users.setName("Laura");
+        users.setEmail("lgumiero@gmail.com");
+
+        usersDAO.save(users);
     }
 }
