@@ -24,9 +24,13 @@ public class DatabaseConnectionTest {
     public void initGetUserList() {
         UsersDAO usersDAO = new UsersDAO();
         List<User> userList = usersDAO.getUserList();
-        userList.forEach(user -> {
-            System.out.println(user);
-        });
+        userList.forEach(System.out::println);
+    }
 
+    @Test
+    public void initGetUser() {
+        UsersDAO usersDAO = new UsersDAO();
+        User user = usersDAO.getUser(3);
+        System.out.println(user);
     }
 }
