@@ -1,6 +1,6 @@
 package model;
 
-public class Users {
+public class User {
 
     private Long id;
     private String name;
@@ -28,5 +28,14 @@ public class Users {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
