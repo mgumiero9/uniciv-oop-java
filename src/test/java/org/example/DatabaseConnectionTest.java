@@ -33,4 +33,14 @@ public class DatabaseConnectionTest {
         User user = usersDAO.getUser(3);
         System.out.println(user);
     }
+
+    @Test
+    public void initUpdateUser() {
+        UsersDAO usersDAO = new UsersDAO();
+        User user = new User();
+        user.setId(3L);
+        user.setName("Name... Updated...");
+        usersDAO.updateUser(user);
+        System.out.println("user updated");
+    }
 }
