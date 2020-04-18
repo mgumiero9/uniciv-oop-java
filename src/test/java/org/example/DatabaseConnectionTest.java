@@ -40,6 +40,14 @@ public class DatabaseConnectionTest {
         user.setId(3L);
         user.setName("Name... Updated...");
         usersDAO.updateUser(user);
-        System.out.println("user updated");
+        System.out.println("command executed");
+    }
+
+    @Test
+    public void initDeleteUser() {
+        UsersDAO usersDAO = new UsersDAO();
+        usersDAO.deleteUser(8L);
+        System.out.println("command executed");
+
     }
 }

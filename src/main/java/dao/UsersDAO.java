@@ -90,4 +90,22 @@ public class UsersDAO {
             throwables.printStackTrace();
         }
     }
+
+    public void deleteUser(Long id) {
+        final String sql = "DELETE FROM users WHERE id = ?;";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setLong(1, id);
+            statement.execute();
+            connection.commit();
+        } catch (SQLException throwables) {
+            try {
+                connection.rollback();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            throwables.printStackTrace();
+        }
+
+    }
 }
