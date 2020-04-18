@@ -13,7 +13,6 @@ public class DatabaseConnectionTest {
         User user = new User();
         UsersDAO usersDAO = new UsersDAO();
 
-        user.setId(5L);
         user.setName("Laura");
         user.setEmail("lgumiero@gmail.com");
 

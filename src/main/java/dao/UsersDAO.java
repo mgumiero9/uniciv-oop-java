@@ -19,12 +19,11 @@ public class UsersDAO {
     }
 
     public void persist(User user) {
-        String sql = "INSERT INTO users (id, name, email) values (?, ?, ?);";
+        String sql = "INSERT INTO users (name, email) values (?, ?);";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setLong(1, user.getId());
-            statement.setString(2, user.getName());
-            statement.setString(3, user.getEmail());
+            statement.setString(1, user.getName());
+            statement.setString(2, user.getEmail());
             statement.execute();
             connection.commit();
         } catch (SQLException throwables) {
