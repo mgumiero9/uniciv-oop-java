@@ -2,6 +2,7 @@ package dao;
 
 import jdbc.SingleConnection;
 import model.User;
+import model.UserTelephone;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -106,6 +107,23 @@ public class UsersDAO {
             }
             throwables.printStackTrace();
         }
+    }
 
+    public void persistTelephone(UserTelephone userTelephone) {
+        final String sql = "INSERT INTO public.user_telephone(\"number\", type, userid) VALUES (?, ?, ?);";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, userTelephone.getNumber());
+            statement.setString(2, userTelephone.getType());
+            statement.setLong(3, userTelephone.getUserId());
+            statement.execute();
+            connection.commit();
+        } catch (SQLException e) {
+            try {
+                connection.rollback();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
     }
 }

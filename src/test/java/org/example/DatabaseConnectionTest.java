@@ -2,6 +2,7 @@ package org.example;
 
 import dao.UsersDAO;
 import model.User;
+import model.UserTelephone;
 import org.junit.Test;
 
 import java.util.List;
@@ -49,5 +50,17 @@ public class DatabaseConnectionTest {
         usersDAO.deleteUser(8L);
         System.out.println("command executed");
 
+    }
+
+    @Test
+    public void initPersistTelephone() {
+        UserTelephone userTelephone = new UserTelephone();
+        userTelephone.setNumber("11997222905");
+        userTelephone.setType("cel");
+        userTelephone.setUserId(1L);
+
+        UsersDAO usersDAO = new UsersDAO();
+        usersDAO.persistTelephone(userTelephone);
+        System.out.println("telephone persisted");
     }
 }
