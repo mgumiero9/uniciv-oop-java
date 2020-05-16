@@ -1,6 +1,7 @@
 package dao;
 
 import jdbc.SingleConnection;
+import model.BeanUserPhone;
 import model.User;
 import model.UserTelephone;
 
@@ -126,5 +127,25 @@ public class UsersDAO {
                 sqlException2.printStackTrace();
             }
         }
+    }
+
+    public List<BeanUserPhone> getUserPhone() {
+        List<BeanUserPhone> beanUserPhones = new ArrayList<>();
+        String sql = "SELECT u.name, u.email, ut.number FROM users u INNER JOIN user_telephone ut on u.id = ut.userid;";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+            while(resultSet.next()) {
+                BeanUserPhone beanUserPhone = new BeanUserPhone();
+                beanUserPhone.setName(resultSet.getString("name"));
+                beanUserPhone.setEmail(resultSet.getString("email"));
+                beanUserPhone.setNumber(resultSet.getString("number"));
+                
+                beanUserPhones.add(beanUserPhone);
+            }
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+        return beanUserPhones;
     }
 }

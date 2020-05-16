@@ -1,6 +1,7 @@
 package org.example;
 
 import dao.UsersDAO;
+import model.BeanUserPhone;
 import model.User;
 import model.UserTelephone;
 import org.junit.Test;
@@ -62,5 +63,14 @@ public class DatabaseConnectionTest {
         UsersDAO usersDAO = new UsersDAO();
         usersDAO.persistTelephone(userTelephone);
         System.out.println("telephone persisted");
+    }
+
+    @Test
+    public void initGetUserPhones() {
+        UsersDAO usersDAO = new UsersDAO();
+        List<BeanUserPhone> userPhone = usersDAO.getUserPhone();
+        for (BeanUserPhone beanUserPhone: userPhone) {
+            System.out.println(beanUserPhone);
+        }
     }
 }
