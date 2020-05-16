@@ -55,7 +55,7 @@ public class DatabaseConnectionTest {
     @Test
     public void initPersistTelephone() {
         UserTelephone userTelephone = new UserTelephone();
-        userTelephone.setNumber("11997222905");
+        userTelephone.setNumber("11987282985");
         userTelephone.setType("cel");
         userTelephone.setUserId(1L);
 
