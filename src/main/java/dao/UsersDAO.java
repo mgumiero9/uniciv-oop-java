@@ -118,11 +118,12 @@ public class UsersDAO {
             statement.setLong(3, userTelephone.getUserId());
             statement.execute();
             connection.commit();
-        } catch (SQLException e) {
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
             try {
                 connection.rollback();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
+            } catch (SQLException sqlException2) {
+                sqlException2.printStackTrace();
             }
         }
     }
